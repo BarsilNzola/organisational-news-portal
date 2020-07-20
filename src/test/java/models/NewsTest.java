@@ -29,7 +29,7 @@ public class NewsTest {
     public void setPostedBySetsCorrectPostedBy() {
         News testNews = setUpNews();
         testNews.setPostedBy("Barsil");
-        assertNotEquals("Jackqueen", testNews.setPostedBy());
+        assertNotEquals("Jackqueen", testNews.getPostedBy());
     }
 
     public News setUpNews() {
