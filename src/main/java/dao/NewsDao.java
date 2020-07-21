@@ -10,11 +10,8 @@ public interface NewsDao {
     void add (News news);
 
     //read
-    List<News> getAll();
+    List<News> getNews();
     News findById(int id);
-
-    //update
-    void update(String post, String postedBy);
 
     //delete
     void deleteById(int id);
