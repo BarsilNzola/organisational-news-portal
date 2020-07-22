@@ -21,8 +21,8 @@ public class App {
         Connection conn;
         Gson gson = new Gson();
 
-        String connectionString = "jdbc:h2:~/organisation.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:postgresql://localhost:5432/organizational_news";
+        Sql2o sql2o = new Sql2o(connectionString, "barsil", "madboysent7042");
 
         userDao = new Sql2oUserDao(sql2o);
         newsDao = new Sql2oNewsDao(sql2o);

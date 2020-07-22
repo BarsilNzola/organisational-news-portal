@@ -39,7 +39,7 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao {
 
     @Override
     public void addDepartmentNewsToDepartment(DepartmentNews departmentNews, Department department) {
-        String sql = "INSERT INTO departments_departmentNews(department_id,departmentNews_id) VALUES(:departmentId,:departmentNewsId)";
+        String sql = "INSERT INTO department_departmentNews(departmentId,departmentNewsId) VALUES(:departmentId,:departmentNewsId)";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("departmentId", department.getId())
@@ -64,8 +64,8 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao {
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from department_news WHERE id = :id";
-        String deleteJoin = "DELETE from departmentId_departmentId WHERE department_id = :department_id";
-        String deleteJoindepartment = "DELETE from employeeId_departmentId WHERE employee_id = :employee_id";
+        String deleteJoin = "DELETE from departmentId_departmentId WHERE departmentId = :departmentId";
+        String deleteJoinDepartment = "DELETE from userId_departmentId WHERE userId = :userId";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)

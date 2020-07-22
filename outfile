@@ -1,0 +1,372 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.21
+-- Dumped by pg_dump version 9.5.21
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: department_departmentnews; Type: TABLE; Schema: public; Owner: barsil
+--
+
+CREATE TABLE public.department_departmentnews (
+    id integer NOT NULL,
+    departmentid integer,
+    departmentnewsid integer
+);
+
+
+ALTER TABLE public.department_departmentnews OWNER TO barsil;
+
+--
+-- Name: department_departmentnews_id_seq; Type: SEQUENCE; Schema: public; Owner: barsil
+--
+
+CREATE SEQUENCE public.department_departmentnews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.department_departmentnews_id_seq OWNER TO barsil;
+
+--
+-- Name: department_departmentnews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: barsil
+--
+
+ALTER SEQUENCE public.department_departmentnews_id_seq OWNED BY public.department_departmentnews.id;
+
+
+--
+-- Name: department_news; Type: TABLE; Schema: public; Owner: barsil
+--
+
+CREATE TABLE public.department_news (
+    id integer NOT NULL,
+    post character varying,
+    postedby character varying
+);
+
+
+ALTER TABLE public.department_news OWNER TO barsil;
+
+--
+-- Name: department_news_id_seq; Type: SEQUENCE; Schema: public; Owner: barsil
+--
+
+CREATE SEQUENCE public.department_news_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.department_news_id_seq OWNER TO barsil;
+
+--
+-- Name: department_news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: barsil
+--
+
+ALTER SEQUENCE public.department_news_id_seq OWNED BY public.department_news.id;
+
+
+--
+-- Name: departments; Type: TABLE; Schema: public; Owner: barsil
+--
+
+CREATE TABLE public.departments (
+    id integer NOT NULL,
+    name character varying,
+    description character varying,
+    noofemployees integer
+);
+
+
+ALTER TABLE public.departments OWNER TO barsil;
+
+--
+-- Name: departments_id_seq; Type: SEQUENCE; Schema: public; Owner: barsil
+--
+
+CREATE SEQUENCE public.departments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.departments_id_seq OWNER TO barsil;
+
+--
+-- Name: departments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: barsil
+--
+
+ALTER SEQUENCE public.departments_id_seq OWNED BY public.departments.id;
+
+
+--
+-- Name: news; Type: TABLE; Schema: public; Owner: barsil
+--
+
+CREATE TABLE public.news (
+    id integer NOT NULL,
+    post character varying,
+    postedby character varying
+);
+
+
+ALTER TABLE public.news OWNER TO barsil;
+
+--
+-- Name: news_id_seq; Type: SEQUENCE; Schema: public; Owner: barsil
+--
+
+CREATE SEQUENCE public.news_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.news_id_seq OWNER TO barsil;
+
+--
+-- Name: news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: barsil
+--
+
+ALTER SEQUENCE public.news_id_seq OWNED BY public.news.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: barsil
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name character varying,
+    "position" character varying,
+    role character varying,
+    departmentid integer
+);
+
+
+ALTER TABLE public.users OWNER TO barsil;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: barsil
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO barsil;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: barsil
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.department_departmentnews ALTER COLUMN id SET DEFAULT nextval('public.department_departmentnews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.department_news ALTER COLUMN id SET DEFAULT nextval('public.department_news_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.departments ALTER COLUMN id SET DEFAULT nextval('public.departments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.news ALTER COLUMN id SET DEFAULT nextval('public.news_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: department_departmentnews; Type: TABLE DATA; Schema: public; Owner: barsil
+--
+
+COPY public.department_departmentnews (id, departmentid, departmentnewsid) FROM stdin;
+\.
+
+
+--
+-- Name: department_departmentnews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: barsil
+--
+
+SELECT pg_catalog.setval('public.department_departmentnews_id_seq', 1, false);
+
+
+--
+-- Data for Name: department_news; Type: TABLE DATA; Schema: public; Owner: barsil
+--
+
+COPY public.department_news (id, post, postedby) FROM stdin;
+\.
+
+
+--
+-- Name: department_news_id_seq; Type: SEQUENCE SET; Schema: public; Owner: barsil
+--
+
+SELECT pg_catalog.setval('public.department_news_id_seq', 1, false);
+
+
+--
+-- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: barsil
+--
+
+COPY public.departments (id, name, description, noofemployees) FROM stdin;
+\.
+
+
+--
+-- Name: departments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: barsil
+--
+
+SELECT pg_catalog.setval('public.departments_id_seq', 1, false);
+
+
+--
+-- Data for Name: news; Type: TABLE DATA; Schema: public; Owner: barsil
+--
+
+COPY public.news (id, post, postedby) FROM stdin;
+\.
+
+
+--
+-- Name: news_id_seq; Type: SEQUENCE SET; Schema: public; Owner: barsil
+--
+
+SELECT pg_catalog.setval('public.news_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: barsil
+--
+
+COPY public.users (id, name, "position", role, departmentid) FROM stdin;
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: barsil
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+
+
+--
+-- Name: department_departmentnews_pkey; Type: CONSTRAINT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.department_departmentnews
+    ADD CONSTRAINT department_departmentnews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: department_news_pkey; Type: CONSTRAINT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.department_news
+    ADD CONSTRAINT department_news_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: departments_pkey; Type: CONSTRAINT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.departments
+    ADD CONSTRAINT departments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: news_pkey; Type: CONSTRAINT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.news
+    ADD CONSTRAINT news_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: barsil
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

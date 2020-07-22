@@ -43,7 +43,7 @@ public class Sql2oDepartmentDao implements DepartmentDao {
 
     @Override
     public void addDepartmentNewsToDepartment(DepartmentNews departmentNews, Department department) {
-        String sql = "INSERT INTO departments_departmentNews(department_id,departmentNews_id) VALUES (:departmentId,:departmentNewsId)";
+        String sql = "INSERT INTO department_departmentNews(departmentId,departmentNewsId) VALUES (:departmentId,:departmentNewsId)";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("departmentId", department.getId())
@@ -55,17 +55,17 @@ public class Sql2oDepartmentDao implements DepartmentDao {
     }
 
     @Override
-    public List<DepartmentNews> getAllDepartmentNewsByDepartment(int department_id) {
+    public List<DepartmentNews> getAllDepartmentNewsByDepartment(int departmentId) {
         ArrayList<DepartmentNews> departmentNews = new ArrayList<>();
-        String joinQuery = "SELECT departmentNews_id FROM departments_departmentNews WHERE department_id =:department_id";
+        String joinQuery = "SELECT departmentNewsId FROM department_departmentNews WHERE departmentId =:departmentId";
         try (Connection con = sql2o.open()) {
             List<Integer> allDepartmentNewsIds = con.createQuery(joinQuery)
-                    .addParameter("department_id", department_id)
+                    .addParameter("departmentId", departmentId)
                     .executeAndFetch(Integer.class);
             for (Integer departmentNewsId : allDepartmentNewsIds) {
-                String departmentNewsQuery = "SELECT * FROM department_news WHERE id =:departmentNews_id";
+                String departmentNewsQuery = "SELECT * FROM department_news WHERE id =:departmentNewsId";
                 departmentNews.add(con.createQuery(departmentNewsQuery)
-                        .addParameter("departmentNews_id", departmentNewsId)
+                        .addParameter("departmentNewsId", departmentNewsId)
                         .executeAndFetchFirst(DepartmentNews.class));
             }
         } catch (Sql2oException ex) {
@@ -94,7 +94,7 @@ public class Sql2oDepartmentDao implements DepartmentDao {
                     .addParameter("id", id)
                     .executeUpdate();
             con.createQuery(deleteJoin)
-                    .addParameter("departmentNews_id", id)
+                    .addParameter("departmentNewsId", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
