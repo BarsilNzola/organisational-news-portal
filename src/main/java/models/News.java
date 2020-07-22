@@ -6,10 +6,12 @@ public class News {
     private String post;
     private String postedBy;
     int id;
+    public String type;
 
     public News(String post, String postedBy) {
         this.post = post;
         this.postedBy = postedBy;
+
     }
 
     public String getPost() {
