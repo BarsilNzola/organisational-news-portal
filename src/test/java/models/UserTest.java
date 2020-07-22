@@ -54,7 +54,7 @@ public class UserTest {
     @Test
     public void setDepartmentIdSetsCorrectId() {
         User testUser = setUpUser();
-        testUser.setDepartmentId(4);
+        testUser.setDepartmentId(5);
         assertNotEquals(4, testUser.getDepartmentId());
     }
 

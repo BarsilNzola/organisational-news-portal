@@ -1,6 +1,6 @@
 package models;
 
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
@@ -22,27 +22,27 @@ public class DepartmentTest {
     @Test
     public void getDescriptionReturnsCorrectDescription() {
         Department testDepartment = setupDepartment();
-        assertEquals("employee management", testDepartment.getDescription);
+        assertEquals("employee management", testDepartment.getDescription());
     }
 
     @Test
     public void setDescriptionSetsCorrectDescription() {
         Department testDepartment = setupDepartment();
         testDepartment.setDescription("financial management");
-        assertNotEquals("employee management", testDepartment.getDescription);
+        assertNotEquals("employee management", testDepartment.getDescription());
     }
 
     @Test
-    public void getNoOfEmployeesgetsCorrectNumber() {
+    public void getNoOfEmployeesGetsCorrectNumber() {
         Department testDepartment = setupDepartment();
-        assertEquals(7, testDepartment.getNoOfEmployees);
+        assertEquals(7, testDepartment.getNoOfEmployees());
     }
 
     @Test
     public void setNoOfEmployeesSetsCorrectNumber() {
         Department testDepartment = setupDepartment();
         testDepartment.setNoOfEmployees(8);
-        assertNotEquals(7,testDepartment.getNoEmployees);
+        assertNotEquals(7,testDepartment.getNoOfEmployees());
     }
 
     public Department setupDepartment () {

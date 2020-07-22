@@ -34,6 +34,7 @@ public class Sql2oDepartmentDaoTest {
         conn.close();
     }
 
+
     public DepartmentNews setupDepartmentNews(){
         DepartmentNews departmentNews = new DepartmentNews("client added new features","Barsil");
         departmentNewsDao.add(departmentNews);

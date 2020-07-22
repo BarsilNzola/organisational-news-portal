@@ -8,8 +8,6 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.concurrent.Callable;
-
 import static org.junit.Assert.*;
 
 public class Sql2oDepartmentNewsDaoTest {
@@ -57,7 +55,7 @@ public class Sql2oDepartmentNewsDaoTest {
     public void getAll() throws Exception {
         DepartmentNews departmentNews1 = setupDepartmentNews();
         DepartmentNews departmentNews2 = setupAnotherDepartmentNews();
-        assertEquals(2, departmentDao.getDepartmentNews().size());
+        assertEquals(2, departmentNewsDao.getDepartmentNews().size());
     }
 
 
